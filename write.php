@@ -1,13 +1,14 @@
 <?php
  
-$file= fopen( "events.xml", "r+" );
+$file= fopen( "events.xml", "w" );
+ftruncate($file,0);
 fwrite($file, '<?xml version="1.0" encoding="UTF-8"?>');
 fwrite($file,"<monthly>");
 
 date_default_timezone_set('Europe/Brussels');
 $year=date("Y");
-// boucle  sur les jours de l'année
 $id=0;
+
 for( $i = 1; $i <= 365; $i++ ) 
 { 
 if ( date("l", mktime(0, 0, 0, 1, $i, $year)) == 'Thursday')
@@ -86,21 +87,21 @@ fwrite($file,"<event><id>".++$id."</id><name>Reboot SQL</name><startdate>".$year
 		{
 			/*echo $p1[2]."/". $p1[1]."/". $p1[0]."</br>";*/
 			
-			fwrite($file,"<event><id>".++$id."</id><name>Arrerages</name><startdate>".$p2[2]."/". $p2[1]."/". $p2[0]."</startdate><enddate></enddate><starttime></starttime><endtime></endtime><color>#2ecc71</color></event>"); 
+			fwrite($file,"<event><id>".++$id."</id><name>Arrerages</name><startdate>".$p2[2]."-". $p2[1]."-". $p2[0]."</startdate><enddate></enddate><starttime></starttime><endtime></endtime><color>#f1c40f</color></event>"); 
 		}
 		
 		if ($p1[2] == $year AND $p2[2] == $year AND $p1[0] == "06")
 		{
 			/*echo $p1[2]."/". $p1[1]."/". $p1[0]."</br>";*/
 			
-			fwrite($file,"<event><id>".++$id."</id><name>Prelevement 6</name><startdate>".$p2[2]."/". $p2[1]."/". $p2[0]."</startdate><enddate></enddate><starttime></starttime><endtime></endtime><color>#2ecc71</color></event>"); 
+			fwrite($file,"<event><id>".++$id."</id><name>Prelevement 6</name><startdate>".$p2[2]."-". $p2[1]."-". $p2[0]."</startdate><enddate></enddate><starttime></starttime><endtime></endtime><color>#f1c40f</color></event>"); 
 		}
 		
 		if ($p1[2] == $year AND $p2[2] == $year AND $p1[0] == "20")
 		{
 			/*echo $p1[2]."/". $p1[1]."/". $p1[0]."</br>";*/
 			
-			fwrite($file,"<event><id>".++$id."</id><name>Prelevement 20</name><startdate>".$p2[2]."/". $p2[1]."/". $p2[0]."</startdate><enddate></enddate><starttime></starttime><endtime></endtime><color>#2ecc71</color></event>"); 
+			fwrite($file,"<event><id>".++$id."</id><name>Prelevement 20</name><startdate>".$p2[2]."-". $p2[1]."-". $p2[0]."</startdate><enddate></enddate><starttime></starttime><endtime></endtime><color>#f1c40f</color></event>"); 
 		}
 		
 		
