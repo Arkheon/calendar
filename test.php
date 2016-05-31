@@ -16,12 +16,12 @@
 		<url></url>
 </event>*/
 
-$year=date("Y");
+
 
 date_default_timezone_set('Europe/Brussels');
-
+$year=date("Y");
 // boucle  sur les jours de l'année
-$id=5;
+$id=0;
 for( $i = 1; $i <= 365; $i++ ) 
 { 
 if ( date("l", mktime(0, 0, 0, 1, $i, $year)) == 'Thursday')
@@ -64,20 +64,26 @@ echo "<event><id>".++$id."</id><name>Reception fonds</name><startdate>".$year."-
  
  
  
-   /*
+
 for( $m = 1; $m <= 12; $m++ ) { 
  if ($m < 10)   
  {   
-$d = new DateTime( $year."-0".$m );
-echo $d->format( 'Y-m-t' )."Fin de mois"."<br />" ; 
+$d = new DateTime( $year."-0".$m );{
+echo "<event><id>".++$id."</id><name>FDM</name><startdate>".$d->format( 'Y-m-t' )."</startdate><enddate></enddate><starttime></starttime><endtime></endtime><color>#e67e22</color></event>";  }
 }
  else {
 $d = new DateTime( $year."-".$m);
-echo $d->format( 'Y-m-t' )."Fin de mois"."<br />" ; 
+echo "<event><id>".++$id."</id><name>FDM</name><startdate>".$d->format( 'Y-m-t' )."</startdate><enddate></enddate><starttime></starttime><endtime></endtime><color>#e67e22</color></event>";  }
 	 }
- }
+ 
+ for( $n = 1; $n <= 12; $n++ ) { 
+ if ($n < 10)   
+ {   
+ echo "<event><id>".++$id."</id><name>Controles FDM</name><startdate>".$year."-0".$n."-25</startdate><enddate></enddate><starttime></starttime><endtime></endtime><color>#3498db</color></event>";  }
 
- */
+ else {
+echo "<event><id>".++$id."</id><name>Controles FDM</name><startdate>".$year."-".$n."-25</startdate><enddate></enddate><starttime></starttime><endtime></endtime><color>#3498db</color></event>";  }	 
+ }
 
 
 
